@@ -5,102 +5,137 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bowen Feng</title>
 <meta name="description" content="Bowen Feng, Human–AI collaboration and auditable systems. School of Informatics, University of Edinburgh.">
+<meta name="theme-color" content="#5a4fa8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f7f6f2;--fg:#1b1b19;--muted:#6b6a65;--rule:#e6e3dc;--card:#ffffff;--chip:#eeece6;--accent:#5a4fa8;--accent-soft:rgba(90,79,168,.22)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141518;--fg:#ecebe6;--muted:#a3a29c;--rule:#2a2c31;--card:#1b1d22;--chip:#24262c;--accent:#b1a7ea;--accent-soft:rgba(177,167,234,.28)}}
-:root[data-theme="dark"]{--bg:#141518;--fg:#ecebe6;--muted:#a3a29c;--rule:#2a2c31;--card:#1b1d22;--chip:#24262c;--accent:#b1a7ea;--accent-soft:rgba(177,167,234,.28)}
+:root{--bg:#f7f6f2;--bg2:#efede7;--fg:#17171a;--muted:#67666a;--rule:#e4e1da;--card:#ffffff;--chip:#ecebe5;--accent:#5a4fa8;--accent2:#9a6fd1;--soft:rgba(90,79,168,.20);--glow:rgba(0,0,0,.05)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121317;--bg2:#17181d;--fg:#ecebe6;--muted:#a09f9a;--rule:#272930;--card:#1a1b21;--chip:#23252b;--accent:#b1a7ea;--accent2:#c9b0f0;--soft:rgba(177,167,234,.26);--glow:rgba(255,255,255,.06)}}
+:root[data-theme="dark"]{--bg:#121317;--bg2:#17181d;--fg:#ecebe6;--muted:#a09f9a;--rule:#272930;--card:#1a1b21;--chip:#23252b;--accent:#b1a7ea;--accent2:#c9b0f0;--soft:rgba(177,167,234,.26);--glow:rgba(255,255,255,.06)}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-body::before{content:"";display:block;height:5px;background:var(--accent)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.wrap{max-width:820px;margin:0 auto;padding:40px 16px 72px}
-header{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;padding-bottom:28px;border-bottom:1px solid var(--rule)}
-header h1{font-family:"Source Serif 4",Georgia,serif;font-size:2.4rem;line-height:1.1;margin:0 0 6px;font-weight:600;letter-spacing:-.02em}
-header .tag{color:var(--accent);font-weight:600;margin:0 0 6px;font-size:1.02rem}
-header .aff{color:var(--muted);margin:0;font-size:.95rem}
-nav{display:flex;gap:6px;flex-wrap:wrap}
-nav a{font-size:.85rem;padding:6px 11px;border:1px solid var(--rule);border-radius:999px;color:var(--fg);background:var(--card);transition:border-color .15s,color .15s}
-nav a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
-h2{font-family:"Source Serif 4",Georgia,serif;font-size:1.35rem;font-weight:600;margin:44px 0 14px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.topbar{position:sticky;top:0;z-index:20;backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--rule)}
+.topbar .in{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:1.05rem;color:var(--fg)}
+.brand i{display:inline-block;width:9px;height:9px;border-radius:3px;background:var(--accent);margin-right:8px;vertical-align:1px}
+nav{display:flex;gap:2px;flex-wrap:wrap}
+nav a{font-size:.86rem;padding:6px 10px;border-radius:999px;color:var(--muted);transition:color .15s,background .15s}
+nav a:hover{color:var(--fg);background:var(--chip);text-decoration:none}
+nav a.on{color:var(--accent);background:var(--soft)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px 80px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;min-height:460px;padding:48px 0 24px}
+.hero h1{font-family:"Source Serif 4",Georgia,serif;font-size:3rem;line-height:1.05;margin:0 0 10px;font-weight:600;letter-spacing:-.025em}
+.hero .tag{color:var(--accent);font-weight:600;font-size:1.15rem;margin:0 0 10px}
+.hero .aff{color:var(--muted);margin:0 0 20px;font-size:.98rem}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-weight:500;font-size:.93rem;border:1px solid var(--rule);background:var(--card);color:var(--fg);transition:transform .15s,border-color .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);border-color:var(--accent);box-shadow:0 8px 20px var(--glow);text-decoration:none}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 35%,transparent)}
+.art{position:relative;aspect-ratio:1/1;max-height:440px;border-radius:20px;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,var(--soft),transparent 60%),var(--bg2);border:1px solid var(--rule)}
+.art canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.art .cap{position:absolute;left:14px;bottom:12px;font-size:.74rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+h2{font-family:"Source Serif 4",Georgia,serif;font-size:1.5rem;font-weight:600;margin:56px 0 16px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
 h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--accent);flex:none}
 p{margin:0 0 12px}
-.lead{font-size:1.08rem}
-.lead strong{background:linear-gradient(transparent 62%,var(--accent-soft) 62%);font-weight:600}
+.lead{font-size:1.12rem;max-width:760px}
+.lead strong{background:linear-gradient(transparent 62%,var(--soft) 62%);font-weight:600}
+.focus{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+.focus .card{padding:18px}
+.focus .k{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.focus .t{font-weight:600;margin:0 0 6px}
+.focus .s{color:var(--muted);font-size:.92rem;margin:0}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .chips li{background:var(--chip);border-radius:999px;padding:6px 12px;font-size:.9rem}
 .cards{display:grid;grid-template-columns:1fr;gap:12px}
-.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;transition:transform .15s,box-shadow .15s,border-color .15s}
-.card:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.06);border-color:var(--accent)}
+.card{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px 18px;transition:transform .2s,box-shadow .2s,border-color .2s;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),var(--soft),transparent 60%)}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--glow);border-color:color-mix(in srgb,var(--accent) 55%,var(--rule))}
+.card:hover::before{opacity:1}
+.card>*{position:relative}
 .card .t{font-weight:600;margin:0 0 4px;font-size:1.02rem}
 .card .a{font-size:.92rem;margin:0 0 4px}
 .card .v{color:var(--muted);font-size:.88rem;margin:0}
 .card .s{color:var(--muted);font-size:.92rem;margin:4px 0 0}
-.badge{display:inline-block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:middle}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.badge{display:inline-block;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .tl{list-style:none;padding:0;margin:0}
 .tl li{position:relative;padding:0 0 14px 18px;border-left:2px solid var(--rule)}
 .tl li::before{content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
 .tl .w{color:var(--muted);font-size:.85rem;display:block}
-footer{margin-top:56px;padding-top:14px;border-top:1px solid var(--rule);color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-@media (max-width:640px){.two{grid-template-columns:1fr}header h1{font-size:1.9rem}body{font-size:15.5px}}
+.news{list-style:none;padding:0;margin:0}
+.news li{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:10px 0;border-bottom:1px dashed var(--rule)}
+.news .d{color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums}
+footer{margin-top:64px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.card,.btn{transition:none}}
+@media (max-width:820px){.hero{grid-template-columns:1fr;min-height:0;padding-top:28px}.hero h1{font-size:2.3rem}.art{max-height:320px}.focus{grid-template-columns:1fr}.two{grid-template-columns:1fr}.news li{grid-template-columns:1fr}.news .d{margin-bottom:-6px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
+<div class="topbar"><div class="in"><a class="brand" href="#top"><i></i>Bowen Feng</a>
+<nav><a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#manuscripts">Manuscripts</a><a href="#background">Background</a><a href="#updates">Updates</a></nav></div></div>
+<div class="wrap" id="top">
+<section class="hero">
   <div>
     <h1>Bowen Feng</h1>
     <p class="tag">Human–AI collaboration and auditable systems</p>
-    <p class="aff">MInf student, School of Informatics, University of Edinburgh · <a href="mailto:s2303119@ed.ac.uk">s2303119@ed.ac.uk</a></p>
+    <p class="aff">MInf student, School of Informatics, University of Edinburgh</p>
+    <div class="cta"><a class="btn primary" href="mailto:s2303119@ed.ac.uk">Email me</a><a class="btn" href="#publications">Publications</a><a class="btn" href="#manuscripts">Manuscripts</a></div>
   </div>
-  <nav><a href="#research">Research</a><a href="#publications">Publications</a><a href="#manuscripts">Manuscripts</a><a href="#background">Background</a><a href="#contact">Contact</a></nav>
-</header>
+  <div class="art"><canvas id="art" aria-hidden="true"></canvas><span class="cap">Evidence moving through a workflow</span></div>
+</section>
 
 <h2 id="about">About</h2>
-<p class="lead">I build and evaluate systems that keep people in control of AI-assisted work. In a randomized study with 120 data workers I showed that the unit of navigation in an analytical conversation changes the fidelity of what gets handed off. In TTAT I turned task templates into auditable web workflows with bounded actions and reviewable evidence, evaluated on WebArena and with 120 industrial users. I am interested in interfaces and audits that make AI assistance inspectable rather than merely convenient.</p>
-<p>I am in the final year of the five-year integrated master's (MInf) in Informatics at the University of Edinburgh, after an exchange year at the University of California, Davis. <strong>I am applying to PhD programs starting in autumn 2027.</strong></p>
+<p class="lead reveal">I build and evaluate systems that keep people in control of AI-assisted work. In a randomized study with 120 data workers I showed that the unit of navigation in an analytical conversation changes the fidelity of what gets handed off. In TTAT I turned task templates into auditable web workflows with bounded actions and reviewable evidence, evaluated on WebArena and with 120 industrial users. I am interested in interfaces and audits that make AI assistance inspectable rather than merely convenient.</p>
+<p class="reveal">I am in the final year of the five-year integrated master's (MInf) in Informatics at the University of Edinburgh, after an exchange year at the University of California, Davis. <strong>I am applying to PhD programs starting in autumn 2027.</strong></p>
+<div class="focus">
+<div class="card reveal"><p class="k">Question</p><p class="t">Who stays in control?</p><p class="s">Human oversight of LLM and web agents in recurring, real work.</p></div>
+<div class="card reveal"><p class="k">Method</p><p class="t">Evidence that travels</p><p class="s">Interfaces where reasoning, caveats and sources move with the output.</p></div>
+<div class="card reveal"><p class="k">Stance</p><p class="t">Inspectable, not just convenient</p><p class="s">Causal studies with real users, not demos.</p></div>
+</div>
 
 <h2 id="research">Research interests</h2>
-<ul class="chips"><li>Human oversight of LLM and web agents</li>
+<ul class="chips reveal"><li>Human oversight of LLM and web agents</li>
 <li>Provenance, sensemaking and analytical handoffs</li>
 <li>Auditing multimodal assistants</li>
 <li>Trust and verification interfaces</li></ul>
 
 <h2 id="publications">Publications</h2>
 <div class="cards">
-<div class="card"><p class="t"><a href="https://doi.org/10.1016/j.compeleceng.2024.109976">Probabilistic Dual-Adaptive Spatio-Temporal Graph Convolutional Networks for Forecasting Energy Consumption Dynamics of Electric Vehicle Charging Stations</a></p><p class="a">D. E. Mekkaoui, M. A. Midoun, A. Smaili, <b>B. Feng</b>, M. Z. Talhaoui, Y. Shen</p><p class="v">Computers &amp; Electrical Engineering 122, 109976 (2025)</p></div>
-<div class="card"><p class="t"><a href="https://doi.org/10.1007/978-981-97-7707-5_7">SPR: A Similar Projection Revisor for Complex Logical Reasoning over Knowledge Graphs</a></p><p class="a">T. Wang, Y. Tang, R. Li, D. Yu, <b>B. Feng</b>, F. Ding, S. Yu, Y. Shen</p><p class="v">Web Information Systems and Applications (WISA 2024), LNCS 14883, pp. 78–90</p></div>
-<div class="card"><p class="t">TIDE-IS: Teacher-Aligned Instance Reliability and Bounded Contour Refinement for Underwater Instance Segmentation</p><p class="a"><b>B. Feng</b></p><p class="v">International Conference on Intelligent Sensing, Communications and Marine Applications (ISCMA 2026), accepted</p></div>
-<div class="card"><p class="t">Micro-Expression Recognition System Based on Dual-Stream Graph Structure and Action Unit Auxiliary Learning</p><p class="a"><b>B. Feng</b></p><p class="v">International Conference on Intelligent Sensing, Communications and Marine Applications (ISCMA 2026), accepted</p></div>
+<div class="card reveal"><p class="t"><a href="https://doi.org/10.1016/j.compeleceng.2024.109976">Probabilistic Dual-Adaptive Spatio-Temporal Graph Convolutional Networks for Forecasting Energy Consumption Dynamics of Electric Vehicle Charging Stations</a></p><p class="a">D. E. Mekkaoui, M. A. Midoun, A. Smaili, <b>B. Feng</b>, M. Z. Talhaoui, Y. Shen</p><p class="v">Computers &amp; Electrical Engineering 122, 109976 (2025)</p></div>
+<div class="card reveal"><p class="t"><a href="https://doi.org/10.1007/978-981-97-7707-5_7">SPR: A Similar Projection Revisor for Complex Logical Reasoning over Knowledge Graphs</a></p><p class="a">T. Wang, Y. Tang, R. Li, D. Yu, <b>B. Feng</b>, F. Ding, S. Yu, Y. Shen</p><p class="v">Web Information Systems and Applications (WISA 2024), LNCS 14883, pp. 78–90</p></div>
+<div class="card reveal"><p class="t">TIDE-IS: Teacher-Aligned Instance Reliability and Bounded Contour Refinement for Underwater Instance Segmentation</p><p class="a"><b>B. Feng</b></p><p class="v">International Conference on Intelligent Sensing, Communications and Marine Applications (ISCMA 2026), accepted</p></div>
+<div class="card reveal"><p class="t">Micro-Expression Recognition System Based on Dual-Stream Graph Structure and Action Unit Auxiliary Learning</p><p class="a"><b>B. Feng</b></p><p class="v">International Conference on Intelligent Sensing, Communications and Marine Applications (ISCMA 2026), accepted</p></div>
 </div>
 
 <h2>Under review</h2>
 <div class="cards">
-<div class="card"><p class="t">From Artifacts to Evidence Bundles: How Context-Preserving Navigation Shapes Analytical Handoffs<span class="badge">Under review</span></p><p class="a"><b>B. Feng</b></p><p class="v">Under review, 2026. Randomized study with 120 data workers on how the unit of navigation in analytical conversations changes handoff quality.</p></div>
-<div class="card"><p class="t">From Task Templates to Action Traces: Auditable Web-Community Workflows for Industrial Users<span class="badge">Under review</span></p><p class="a"><b>B. Feng</b>, T. Xie</p><p class="v">Under review, 2026. A six-stage system connecting human-authored task templates to bounded GUI actions and reviewable evidence; evaluated on WebArena and with 120 industrial users.</p></div>
-<div class="card"><p class="t">When Should a Text-Prompted Segmenter Abstain? Area-Limited Foreground–Context Evidence for One-Prompt Presence Decisions<span class="badge">Under review</span></p><p class="a"><b>B. Feng</b></p><p class="v">Under review (journal), 2026.</p></div>
-<div class="card"><p class="t">One-Sided Residual Certificates for Exact Quantized Image Retrieval<span class="badge">Under review</span></p><p class="a"><b>B. Feng</b></p><p class="v">Under review (journal), 2026.</p></div>
+<div class="card reveal"><p class="t">From Artifacts to Evidence Bundles: How Context-Preserving Navigation Shapes Analytical Handoffs<span class="badge">Under review</span></p><p class="a"><b>B. Feng</b></p><p class="v">Under review, 2026. Randomized study with 120 data workers on how the unit of navigation in analytical conversations changes handoff quality.</p></div>
+<div class="card reveal"><p class="t">From Task Templates to Action Traces: Auditable Web-Community Workflows for Industrial Users<span class="badge">Under review</span></p><p class="a"><b>B. Feng</b>, T. Xie</p><p class="v">Under review, 2026. A six-stage system connecting human-authored task templates to bounded GUI actions and reviewable evidence; evaluated on WebArena and with 120 industrial users.</p></div>
+<div class="card reveal"><p class="t">When Should a Text-Prompted Segmenter Abstain? Area-Limited Foreground–Context Evidence for One-Prompt Presence Decisions<span class="badge">Under review</span></p><p class="a"><b>B. Feng</b></p><p class="v">Under review (journal), 2026.</p></div>
+<div class="card reveal"><p class="t">One-Sided Residual Certificates for Exact Quantized Image Retrieval<span class="badge">Under review</span></p><p class="a"><b>B. Feng</b></p><p class="v">Under review (journal), 2026.</p></div>
 </div>
 
 <h2 id="manuscripts">Manuscripts in preparation</h2>
 <div class="cards">
-<div class="card"><p class="t">When Correct Evidence Becomes a Target: Auditing Obligation-Induced Capture in Visual Workflows<span class="badge">In preparation</span></p><p class="s">Mandatory coverage checks can steer a visual assistant toward the wrong region; a counterfactual audit varies records and obligations while holding the visual query fixed.</p></div>
-<div class="card"><p class="t">MOVE Before You Click: Visual Crossover for Agent Grounding<span class="badge">In preparation</span></p><p class="s">GUI agents can agree on the wrong control because repeated views preserve a position preference; cycling candidates through slots separates content from position.</p></div>
+<div class="card reveal"><p class="t">When Correct Evidence Becomes a Target: Auditing Obligation-Induced Capture in Visual Workflows<span class="badge">In preparation</span></p><p class="s">Mandatory coverage checks can steer a visual assistant toward the wrong region; a counterfactual audit varies records and obligations while holding the visual query fixed.</p></div>
+<div class="card reveal"><p class="t">MOVE Before You Click: Visual Crossover for Agent Grounding<span class="badge">In preparation</span></p><p class="s">GUI agents can agree on the wrong control because repeated views preserve a position preference; cycling candidates through slots separates content from position.</p></div>
 </div>
 
 <h2 id="background">Background</h2>
 <div class="two">
-<div>
-<p class="t" style="font-weight:600;margin:0 0 10px">Education</p>
+<div class="reveal">
+<p style="font-weight:600;margin:0 0 10px">Education</p>
 <ul class="tl">
 <li>University of Edinburgh, Master of Informatics (MInf), five-year integrated master's, School of Informatics.<span class="w">2022 – 2027 (expected)</span></li>
 <li>University of California, Davis, exchange year.<span class="w">2024 – 2025</span></li>
 </ul>
 </div>
-<div>
-<p class="t" style="font-weight:600;margin:0 0 10px">Research experience</p>
+<div class="reveal">
+<p style="font-weight:600;margin:0 0 10px">Research experience</p>
 <ul class="tl">
 <li>MInf project on generative 3D part amodal segmentation, supervised by Dr Changjian Li, University of Edinburgh.<span class="w">2025 – 2027</span></li>
 <li>Auditable web workflows (TTAT), with Prof. Tian Xie, Zhejiang University.<span class="w">2025 – 2026</span></li>
@@ -110,10 +145,68 @@ footer{margin-top:56px;padding-top:14px;border-top:1px solid var(--rule);color:v
 </div>
 </div>
 
-<h2 id="contact">Contact</h2>
-<p>Email is the best way to reach me: <a href="mailto:s2303119@ed.ac.uk">s2303119@ed.ac.uk</a>. I'm happy to share any manuscript listed above on request.</p>
+<h2 id="updates">Updates</h2>
+<ul class="news">
+<li class="reveal"><span class="d">Oct 2026</span><span>Preparing several first-author manuscripts for submission; this site lists the ones closest to my current direction.</span></li>
+<li class="reveal"><span class="d">Sep 2026</span><span>Two first-author papers on analytical handoffs and auditable web workflows went out for review.</span></li>
+<li class="reveal"><span class="d">2026</span><span>Two sole-author papers accepted at ISCMA 2026 (underwater instance segmentation; micro-expression recognition).</span></li>
+<li class="reveal"><span class="d">2025</span><span>Co-authored journal paper on spatio-temporal forecasting published in Computers &amp; Electrical Engineering.</span></li>
+<li class="reveal"><span class="d">2024–25</span><span>Exchange year at UC Davis.</span></li>
+</ul>
 
-<footer><span>Bowen Feng</span><span>Last updated October 2026</span></footer>
+<h2 id="contact">Contact</h2>
+<p class="reveal">Email is the best way to reach me: <a href="mailto:s2303119@ed.ac.uk">s2303119@ed.ac.uk</a>. I'm happy to share any manuscript listed above on request.</p>
+
+<footer><span>Bowen Feng · Human–AI collaboration and auditable systems</span><span>Last updated October 2026</span></footer>
 </div>
+<script>
+(function(){
+  const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // scroll reveal
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // card spotlight follows the pointer
+  document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');}));
+  // active nav
+  const links=[...document.querySelectorAll('nav a')]; const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const so=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));}});},{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s=>so.observe(s));
+  window.__rm = rm;
+})();
+</script>
+<script>
+(function(){
+  const cv=document.getElementById('art'); const ctx=cv.getContext('2d'); let W,H,DPR;
+  function size(){DPR=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);} size(); addEventListener('resize',size);
+  const acc=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  const acc2=getComputedStyle(document.documentElement).getPropertyValue('--accent2').trim();
+  const fg=getComputedStyle(document.documentElement).getPropertyValue('--muted').trim();
+  const nodes=[{x:.14,y:.30,l:'template'},{x:.40,y:.18,l:'plan'},{x:.42,y:.52,l:'action'},{x:.66,y:.34,l:'trace'},{x:.68,y:.72,l:'evidence'},{x:.88,y:.52,l:'review'},{x:.20,y:.72,l:'handoff'}];
+  const edges=[[0,1],[1,2],[0,2],[2,3],[2,4],[3,5],[4,5],[4,6],[6,0]];
+  nodes.forEach(n=>{n.ox=n.x;n.oy=n.y;n.vx=0;n.vy=0;});
+  let tx=-1,ty=-1,inside=false; cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;inside=true;});
+  cv.parentElement.addEventListener('pointerleave',()=>{inside=false;});
+  const packets=edges.map((e,i)=>({e,t:(i*.37)%1,s:.0025+.0015*(i%3)}));
+  let t0=performance.now();
+  function frame(now){
+    const t=(now-t0)/1000; ctx.clearRect(0,0,W,H);
+    nodes.forEach((n,i)=>{ // gentle drift + pointer attraction
+      const drift=window.__rm?0:.012; let gx=n.ox+drift*Math.sin(t*.6+i), gy=n.oy+drift*Math.cos(t*.5+i*1.3);
+      if(inside){const dx=tx-n.x,dy=ty-n.y,d=Math.hypot(dx,dy); if(d<.28){gx+=dx*.35*(1-d/.28);gy+=dy*.35*(1-d/.28);}}
+      n.vx+=(gx-n.x)*.05; n.vy+=(gy-n.y)*.05; n.vx*=.82; n.vy*=.82; n.x+=n.vx; n.y+=n.vy;
+    });
+    const P=n=>[n.x*W,n.y*H];
+    edges.forEach(([a,b])=>{const A=P(nodes[a]),B=P(nodes[b]);const mid=[(A[0]+B[0])/2/W,(A[1]+B[1])/2/H];const d=inside?Math.hypot(mid[0]-tx,mid[1]-ty):1;const hot=Math.max(0,1-d/.3);
+      ctx.strokeStyle=hot>0?acc:fg; ctx.globalAlpha=.25+hot*.7; ctx.lineWidth=1+hot*1.2; ctx.beginPath(); ctx.moveTo(A[0],A[1]); ctx.lineTo(B[0],B[1]); ctx.stroke();});
+    packets.forEach(p=>{if(!window.__rm)p.t=(p.t+p.s)%1; const A=P(nodes[p.e[0]]),B=P(nodes[p.e[1]]); const x=A[0]+(B[0]-A[0])*p.t,y=A[1]+(B[1]-A[1])*p.t; ctx.fillStyle=acc2; ctx.globalAlpha=.9; ctx.beginPath(); ctx.arc(x,y,2.6,0,6.283); ctx.fill();});
+    nodes.forEach(n=>{const [x,y]=P(n); const d=inside?Math.hypot(n.x-tx,n.y-ty):1; const hot=Math.max(0,1-d/.25);
+      ctx.globalAlpha=.18+hot*.5; ctx.fillStyle=acc; ctx.beginPath(); ctx.arc(x,y,18+hot*10,0,6.283); ctx.fill();
+      ctx.globalAlpha=1; ctx.fillStyle=acc; ctx.beginPath(); ctx.arc(x,y,6+hot*2,0,6.283); ctx.fill();
+      ctx.fillStyle=fg; ctx.font='12px Inter, system-ui, sans-serif'; ctx.textAlign='center'; ctx.globalAlpha=.9; ctx.fillText(n.l,x,y+30);});
+    ctx.globalAlpha=1; requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>
